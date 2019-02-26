@@ -57,6 +57,7 @@ push:setupScreen(WWIDTH, WHEIGHT, RWIDTH, RHEIGHT, {
 --\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\--
 
 function love.load()
+  resources:loadSounds()
   resources:loadImages()
   resources:loadFonts()
   gameState = 1

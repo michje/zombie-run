@@ -5,7 +5,7 @@ local game = state:new()
 function game.load(params)
   
   love.graphics.setNewFont(92)
-  
+  love.audio.play(introMusic)
   --load
   
 end
@@ -39,6 +39,7 @@ end
 --[[ External ]]--
 
 function love.keypressed(key, scancode, isrepeat)
+  love.audio.stop(introMusic)
   state:switch("scenes/game", {})
 end
 

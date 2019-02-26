@@ -11,6 +11,9 @@ function resources:loadImages()
 end
 
 function resources:loadSounds()
+  	gunshotSound = love.audio.newSource("sounds/short-gunshot.wav", "static");
+    introMusic = love.audio.newSource("sounds/The Plague.mp3", "stream");introMusic:setLooping(true)
+    deadMusic = love.audio.newSource("sounds/Zombie Garden.mp3", "stream");deadMusic:setLooping(true)
 end
 
 function resources:loadFonts()

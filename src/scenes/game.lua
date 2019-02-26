@@ -181,7 +181,7 @@ function spawnBullet()
   bullet.speed = 500
   bullet.direction = player_mouse_angle()
   bullet.dead = false
-
+  love.audio.play(gunshotSound)
   table.insert(bullets, bullet)
 end
 
