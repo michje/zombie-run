@@ -4,6 +4,9 @@
 
 WWIDTH, WHEIGHT = 1920, 1080 --16/9 aspect ratio
 require('mobdebug').start()  -- debugging fix / ZeroBrane Studio
+  
+STATE_MENU = 1
+STATE_INGAME = 2
 
 --//////////////////////////////////--
 --//-\\-//-[[- INCLUDES -]]-\\-//-\\--
@@ -54,16 +57,11 @@ push:setupScreen(WWIDTH, WHEIGHT, RWIDTH, RHEIGHT, {
 --\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\--
 
 function love.load()
-  
   resources:loadImages()
-
+  resources:loadFonts()
   gameState = 1
-
-  myFont = love.graphics.newFont(40)
   screen:setDimensions(push:getDimensions())
-  
-  state:switch("scenes/game", {})
-  
+  state:switch("scenes/menu", {})
 end
 
 function love.update(dt)
@@ -71,29 +69,21 @@ function love.update(dt)
   lue:update(dt)
   soft:update(dt)
   trail:update(dt)
-  
   state:update(dt)
-  
 end
 
 function love.draw()
-  
-
   push:apply("start")
   screen:apply()
-  
   state:draw()
-  
   push:apply("end")
-  
 end
 
 
 function love.keypressed(key, scancode, isrepeat)
- 
   if key == 'escape' then
-        -- the function LÖVE2D uses to quit the application
-        love.event.quit()
+    -- the function LÖVE2D uses to quit the application
+    love.event.quit()
   end 
 end
 

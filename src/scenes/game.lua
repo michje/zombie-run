@@ -105,17 +105,17 @@ end
 function game.draw()
   
   local time = love.timer.getTime()
-  love.graphics.printf("Welcome!", math.cos(time*5)*100, WHEIGHT*.5 + math.sin(time)*100, WWIDTH, "center")
   
   --draw
- love.graphics.draw(sprites.background, 0, 0)
-
-  if gameState == 1 then
-    love.graphics.setFont(myFont)
-    love.graphics.printf("Click anywhere to begin!", 0, 50, love.graphics.getWidth(), "center")
+  love.graphics.setFont(scoreFont)
+  for i = 0, push:getWidth() / sprites.background:getWidth() do
+    for j = 0, push:getHeight() / sprites.background:getHeight() do
+      love.graphics.draw(sprites.background, i * sprites.background:getWidth(), j * sprites.background:getHeight())
+    end
   end
+  
 
-  love.graphics.printf("Score: " .. score, 0, love.graphics.getHeight() - 100, love.graphics.getWidth(), "center")
+  love.graphics.printf("Score: " .. score, 0, push:getHeight() - 100, push:getWidth(), "center")
 
   love.graphics.draw(sprites.player, player.x, player.y, player_mouse_angle(), nil, nil, sprites.player:getWidth()/2, sprites.player:getHeight()/2)
 
@@ -154,16 +154,16 @@ function spawnZombie()
 
   if side == 1 then
     zombie.x = -30
-    zombie.y = math.random(0, love.graphics.getHeight())
+    zombie.y = math.random(0, push:getHeight())
   elseif side == 2 then
-    zombie.x = math.random(0, love.graphics.getWidth())
+    zombie.x = math.random(0, push:getWidth())
     zombie.y = -30
   elseif side == 3 then
-    zombie.x = love.graphics.getWidth() + 30
-    zombie.y = math.random(0, love.graphics.getHeight())
+    zombie.x = push:getWidth() + 30
+    zombie.y = math.random(0, push:getHeight())
   else
-    zombie.x = math.random(0, love.graphics.getWidth())
-    zombie.y = love.graphics.getHeight() + 30
+    zombie.x = math.random(0, push:getWidth())
+    zombie.y = push:getHeight() + 30
   end
 
   table.insert(zombies, zombie)

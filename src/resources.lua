@@ -13,4 +13,11 @@ end
 function resources:loadSounds()
 end
 
+function resources:loadFonts()
+  myFont = love.graphics.newFont(40)
+  smallFont = love.graphics.newFont('fonts/font.ttf', 16)
+  largeFont = love.graphics.newFont('fonts/font.ttf', 32)
+  scoreFont = love.graphics.newFont('fonts/font.ttf', 64)
+end
+
 return resources
