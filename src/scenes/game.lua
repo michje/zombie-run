@@ -13,8 +13,8 @@ function game.load(params)
   score = 0
   
   player = {}
-  player.x = love.graphics.getWidth()/2
-  player.y = love.graphics.getHeight()/2
+  player.x = push:getWidth()/2
+  player.y = push:getHeight()/2
   player.speed = 180
 
   zombies = {}
@@ -24,7 +24,7 @@ end
 function game.update(dt)
 
   if gameState == 2 then
-    if love.keyboard.isDown("s") and player.y < love.graphics.getHeight() then
+    if love.keyboard.isDown("s") and player.y < push:getHeight() then
       player.y = player.y + player.speed * dt
     end
 
@@ -36,7 +36,7 @@ function game.update(dt)
       player.x = player.x - player.speed * dt
     end
 
-    if love.keyboard.isDown("d") and player.x < love.graphics.getWidth() then
+    if love.keyboard.isDown("d") and player.x < push:getWidth() then
       player.x = player.x + player.speed * dt
     end
   end
@@ -49,8 +49,8 @@ function game.update(dt)
       for i,z in ipairs(zombies) do
         zombies[i] = nil
         gameState = 1
-        player.x = love.graphics.getWidth()/2
-        player.y = love.graphics.getHeight()/2
+        player.x = push:getWidth()/2
+        player.y = push:getHeight()/2
       end
     end
   end
@@ -62,7 +62,7 @@ function game.update(dt)
 
   for i=#bullets,1,-1 do
     local b = bullets[i]
-    if b.x < 0 or b.y < 0 or b.x > love.graphics.getWidth() or b.y > love.graphics.getHeight() then
+    if b.x < 0 or b.y < 0 or b.x > push:getWidth() or b.y > push:getHeight() then
       table.remove(bullets, i)
     end
   end
@@ -137,13 +137,18 @@ end
 --[[ External ]]--
 
 function player_mouse_angle()
-  return math.atan2(player.y - love.mouse.getY(), player.x - love.mouse.getX()) + math.pi
+  local mouseX, mouseY = love.mouse.getPosition()
+  mouseX, mouseY = push:toGame(mouseX, mouseY)
+  
+  return math.atan2(player.y - mouseY, player.x - mouseX) + math.pi
 end
 
 function zombie_player_angle(enemy)
   return math.atan2(player.y - enemy.y, player.x - enemy.x)
 end
+
 function spawnZombie()
+  
   zombie = {}
   zombie.x = 0
   zombie.y = 0
