@@ -13,10 +13,11 @@ Both Under The MIT License (MIT)
 
 Music
 -----
-[the-plague](https://opengameart.org/content/the-plague) by [indieteur] (https://opengameart.org/users/indieteur)
-[zombie-garden](https://opengameart.org/content/zombie-garden) by [macro] (https://opengameart.org/users/macro)
+[the-plague](https://opengameart.org/content/the-plague) by [indieteur](https://opengameart.org/users/indieteur)
+
+[zombie-garden](https://opengameart.org/content/zombie-garden) by [macro](https://opengameart.org/users/macro)
 
 
 Sounds
 ------
-[Short Gunshot](https://freesound.org/people/JohanDeecke/sounds/369528/) by [Johan Deecke] (https://freesound.org/people/JohanDeecke/)
+[Short Gunshot](https://freesound.org/people/JohanDeecke/sounds/369528/) by [Johan Deecke](https://freesound.org/people/JohanDeecke/)
